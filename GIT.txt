@@ -1,0 +1,70 @@
+﻿Logiciel de gestion de version
+==============================
+
+- Un commit est une trace, une version du code pour ne pas la perdre, petites modifications
+
+- le resultat final est mla somme de tous ces commits (historiques)
+
+- GIT est un modele distribué
+
+- on a toutes les données sur sa machine locale, et on peut travailler sans connexion internet
+
+- télécharger GIT sur windows: https://gitforwindows.org/
+
+- Exécutez la commande suivante pour définir votre nom et l’email que vous utiliserez ensuite pour créer un compte gratuit sur Github:
+
+  git config --global user.name "armelbrice"
+  git config --global user.email "info_brice@yahoo.fr"
+
+Pour vérifier que tout va bien, relancez votre console et tapez simplement 'git'. 
+Si l’installation a fonctionné, vous devriez voir du texte en anglais expliquant l’utilisation de Git.
+
+- Pour activer un dossier comme repository Git, il suffit de se placer dans ce dossier avec le Terminal puis d'utiliser 
+  la commande git init. 
+
+- Pour gérer un repository, Git génère un index de tous les fichiers dont il doit faire le suivi. 
+  Lorsque vous créez un fichier dans un repository, vous devez donc l'ajouter à l'index Git à l'aide 
+  de la commande git add nomDeVotreFichier.extension. Par exemple : git add checklist-vacances.md
+
+- Pour gagner du temps, vous pouvez ajouter tous les fichiers dans le répertoire courant en tapant git add .
+
+- Lorsque vous modifiez votre repository, vous devez demander à Git d'enregistrer vos modifications en faisant un git commit. 
+  L'option-m vous permet de lui envoyer un message décrivant les modifications effectuées, ce qui s'avèrera très utile pour vous par la suite, you'll see! :) 
+  Par exemple : git commit -m "Ajouté ma checklist-vacances.md (woohoo!)"
+
+- si vous ne faites que mettre à jour un fichier que vous aviez déjà ajouté à l'index, vous pouvez condenser ces deux étapes de la façon suivante : 
+  git commit -a -m "Ajouté itinéraire dans checklist-vacances.md"
+  L'option   -a demande à Git de mettre à jour les fichiers déjà existants dans son index. 
+
+- git status permet aussi de savoir si on est dans un repository
+
+Lorsque vous effectuez une série de commits sur un projet, il peut vous arriver de vouloir remonter dans le temps à la recherche d'erreurs éventuelles par exemple. Pour vous positionner sur un commit donné de votre historique, il vous suffit d'utiliser la commande git checkout de la façon suivante :
+
+git checkout SHADuCommit
+Pour revenir à votre branche principale (au commit le plus récent), on utilise la même commande :
+
+git checkout master
+Quelques astuces
+Je suis sur Windows, je n'arrive pas à copier-coller le SHA du commit dans lequel je veux me positionner depuis ma console...
+
+Je vous conseille d'aller faire un tour sur cet article, oui c'est en anglais... mais c'est le cas de beaucoup de ressources dans le monde du développement, mieux vaut vous y habituer dès maintenant :).
+
+J'ai fait mon commit un peu trop vite... est-ce que je peux l'annuler ?
+
+On ne peut pas vraiment "supprimer" un commit, mais on a plusieurs options pour l'annuler. Cependant, ces options ont des limites et sont à utiliser avec prudence et parcimonie !
+
+Je vous présente une de ces options : vous pouvez "revert" un commit, c'est-à-dire créer un nouveau commit qui fait l'inverse du précédent, avec la commande suivante :
+
+git revert SHADuCommit
+Attention, ça crée un nouveau commit dans l'historique du coup ! (le commit "inverse" du précédent)
+
+Sinon, si vous voulez simplement modifier le message de votre dernier commit, vous pouvez utiliser la commande suivante :
+
+git commit --amend -m "Votre nouveau message"
+... mais attention, vous ne pouvez modifier ce message que si vous n'avez pas encore pushé votre commit sur l'origine !
+
+Je n'ai pas encore fait mon nouveau commit, mais je veux annuler tous les changements que je n'ai pas encore commités. Possible ?
+
+ Possible avec un reset !
+
+git reset --hard
