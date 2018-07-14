@@ -1,2 +1,2 @@
 fonction A retourne a
-fonction B retourne b
+fonction B retourne B
