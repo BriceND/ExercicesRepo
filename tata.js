@@ -1,2 +1,3 @@
 fonction A retourne a
-fonction B retourne B
+ ma variable a
+fonction B retourne b
